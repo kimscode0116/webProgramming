@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  1번<br>
+  가중치: 0 <input type="radio" name="radiobtn1" checked>
+  1 <input type="radio" name="radiobtn1">
+  2 <input type="radio" name="radiobtn1">
+  3 <input type="radio" name="radiobtn1">
+  4 <input type="radio" name="radiobtn1"><br>
+  <input type="text" id="number1" value=""><br>
+
+  2번<br>
+  가중치: 0 <input type="radio" name="radiobtn2" checked>
+  1 <input type="radio" name="radiobtn2">
+  2 <input type="radio" name="radiobtn2">
+  3 <input type="radio" name="radiobtn2">
+  4 <input type="radio" name="radiobtn2"><br>
+  <input type="text" id="number2" value=""><br>
+
+  3번<br>
+  가중치: 0 <input type="radio" name="radiobtn3" checked>
+  1 <input type="radio" name="radiobtn3">
+  2 <input type="radio" name="radiobtn3">
+  3 <input type="radio" name="radiobtn3">
+  4 <input type="radio" name="radiobtn3"><br>
+  <input type="text" id="number3" value=""><br>
+  <span id="resultArea"></span>
+  <input type="button" id="clacbtn" value="계산">
+</body>
+
+<script>
+  $("#clacbtn").click(function() {
+    let firstNum = 0;
+    let secondNum = 0;
+    let thirdNum = 0;
+
+    let text1 = $(`#number1`).val();
+    let text2 = $(`#number2`).val();
+    let text3 = $(`#number3`).val();
+
+    for (let i = 0; i < $(`input[name="radiobtn1"]`).length; i++) {
+      if ($(`input[name="radiobtn1"]`)[i].checked) {
+        firstNum = i;
+      }
+      if ($(`input[name="radiobtn2"]`)[i].checked) {
+        secondNum = i;
+      }
+      if ($(`input[name="radiobtn3"]`)[i].checked) {
+        thirdNum = i;
+      }
+    }
+    let calc = (firstNum * text1) + (secondNum * text2) + (thirdNum * text3);
+
+    $("#resultArea").append(`${firstNum} X ${text1} +
+                  ${secondNum} X ${text2} +
+                  ${thirdNum} X ${text3} = ${calc}<br>`)
+  });
+</script>
+</html>

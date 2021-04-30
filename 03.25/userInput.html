@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+  <body>
+  제목 : <input type="text" id="title" value="">
+  <br>
+  내용 : <input type="text" id="content" value="">
+  <input type='button' value='button' id="button">
+
+  </body>
+  <script>
+    $("#button").click(function() {
+     console.log($("#title").val(),$("#content").val())
+
+    $.ajax ({
+      method : "POST",
+      url : `/userTest`,
+      data : {
+        title : $("#title").val(),
+        content : $("#content").val()
+      },
+      success : function(res) {
+        console.log(res);
+        if(res=='not ok') {
+          alert("입력 실패");
+        }
+        else if(res=='ok') {
+          alert("입력 성공");
+        }
+        }
+   });
+});
+  </script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  1 <input type="radio" name="radioName" checked><br>
+  2 <input type="radio" name="radioName" ><br>
+  3 <input type="radio" name="radioName" ><br>
+  4 <input type="radio" name="radioName" ><br>
+  5 <input type="radio" name="radioName" ><br>
+  6 <input type="radio" name="radioName" ><br>
+  7 <input type="radio" name="radioName" ><br>
+  8 <input type="radio" name="radioName" ><br>
+  <input type="button" id="button" value="번호확인">
+</body>
+
+<script>
+  $("#button").click(function() {
+    for(let i = 0; i < $(`input[name="radioName"]`).length; i++) {
+      if($(`input[name="radioName"]`)[i].checked) {
+        console.log(`${i+1}번째가 체크되었습니다.`)
+      }
+    }
+  });
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>gugu_option</title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <input type="text" id="first" value=""><br>
+  <input type="text" id="second" value=""><br>
+  짝 : <input type="radio" name="radiobutton" value="짝수" checked>
+  홀 : <input type="radio" name="radiobutton" value="홀수"><br>
+  <input type="button" value="단 계산" id="button"><br>
+  <span id="resultArea"></span>
+</body>
+
+<script>
+  $("#button").click(function() {
+
+    $("#resultArea").html("");
+    let firstNum = $("#first").val();
+    let secondNum = $("#second").val();
+
+    let radioVal1 = $(`input[name="radiobutton"]:checked`).val();
+    if (radioVal1 == "짝수") {
+      console.log(radioVal1);
+      for (let i = 2; i <= secondNum; i += 2) {
+        let clac = firstNum * i
+        console.log(`${firstNum} X ${i} = ${clac}`)
+        $("#resultArea").append(`${firstNum} X ${i} = ${clac}<br>`)
+      }
+    }
+
+    let radioVal2 = $(`input[name="radiobutton"]:checked`).val();
+    if (radioVal2 =='홀수') {
+      console.log(radioVal2);
+      for (let i = 1; i <= secondNum; i += 2) {
+        let clac = firstNum * i
+        console.log(`${firstNum} X ${i} = ${clac}`)
+        $("#resultArea").append(`${firstNum} X ${i} = ${clac}<br>`)
+      }
+    }
+  });
+</script>
+
+</html>

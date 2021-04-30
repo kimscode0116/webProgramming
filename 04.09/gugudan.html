@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>gugu</title>
+  </head>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+  <body>
+    <input type="text" id="first" value="">
+    <br>
+    <input type="text" id="second" value="">
+    <br>
+    <input type="button" value="단 계산" id="button" >
+    <br>
+    <span id = "resultArea"></span>
+  </body>
+
+  <script>
+
+  $("#button").click(function() {
+      let firstNum = $("#first").val();
+      let secondNum = $("#second").val();
+
+     for(let i = 1; i<=secondNum; i++) {
+       let clac = firstNum * i;
+      console.log(`${firstNum}  X  ${i}  = ${clac}`)
+        $("#resultArea").append(`${firstNum}  X  ${i}  = ${clac}<br>`)
+     }
+    })
+    </script>
+</html>

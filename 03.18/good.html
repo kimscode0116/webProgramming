@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- // 스크립트(쿼리문 제이쿼리로 작성하겠다 ) -->
+
+  <body>
+    학생 정보를 입력하세요 <br>
+    학번 : <input type="text" id="stdNum">
+    이름 : <input type="text" id="stdName">
+    나이 : <input type="text" id="stdAge">
+    <input type="button" value='button1' id="버튼1">
+    <br>
+  </body>
+
+    <script>
+      $("#버튼1").click(function() {
+      console.log($("#stdNum").val(),$("#stdName").val(),$("#stdAge").val())
+
+      $.ajax ({
+    		method : "POST",
+    		url : `/studentInfoPractice?`,
+    		data : {
+          studentNo : $("#stdNum").val(),
+          name : $("#stdName").val(),
+          age : $("#stdAge").val()
+        },
+        success : function(res) {
+          console.log(res)
+        }
+     });
+ });
+    </script>
+</html>

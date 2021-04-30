@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    id: <input type="text" id="id" value="abc"><br>
+    Password: <input type="text" id="password"><br>
+        <input type="button" value="버튼1" id="button1" >
+        <input type="button" value="버튼2" id="button2" >
+        <input type="button" value="버튼3" id="button3" >
+        <input type="button" value="버튼4" id="button4" >
+
+
+    <script>
+      document.getElementById("button1").addEventListener("click", function(){
+        console.log(document.getElementById("id").value, document.getElementById("password").value;
+      });
+    </script>
+
+  </body>
+</html>

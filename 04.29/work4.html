@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <body>
+    학번 : <input type="text" id="stdNo" value=""><br>
+    이름 : <input type="text" id="stdName" value=""><br>
+    <input type="button" id="save" value="입력"><br>
+  </body>
+  <script>
+  $("#save").click(function() {
+
+    $.ajax ({
+      method : "POST",
+      url : `/insertStudent`,
+      data : {
+        studentNo : $("#stdNo").val(),
+        name : $("#stdName").val()
+      },
+      success : function(res) {
+        console.log(res)
+      }
+   });
+
+ })
+  </script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <body>
+
+    id: <input type="text" id="id"><br>
+    Password: <input type="text" id="password"><br>
+    <input type='button' value= '버튼1' id="button1">
+
+    <script>
+      $("#button1").click(function(){
+        console.log($("#id").val(),$("#password").val());
+      });
+    </script>
+
+  </body>
+</html>

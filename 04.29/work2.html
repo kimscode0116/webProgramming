@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  1 <input type="radio" name="radio1" checked>
+  2 <input type="radio" name="radio1">
+  3 <input type="radio" name="radio1">
+  4 <input type="radio" name="radio1">
+  5 <input type="radio" name="radio1">
+  6 <input type="radio" name="radio1">
+  7 <input type="radio" name="radio1">
+  8 <input type="radio" name="radio1">
+  9 <input type="radio" name="radio1">
+  10 <input type="radio" name="radio1"><br>
+
+  1 <input type="radio" name="radio2" checked>
+  2 <input type="radio" name="radio2">
+  3 <input type="radio" name="radio2">
+  4 <input type="radio" name="radio2">
+  5 <input type="radio" name="radio2">
+  6 <input type="radio" name="radio2">
+  7 <input type="radio" name="radio2">
+  8 <input type="radio" name="radio2">
+  9 <input type="radio" name="radio2">
+  10 <input type="radio" name="radio2"><br>
+
+  1 <input type="radio" name="radio3" checked>
+  2 <input type="radio" name="radio3">
+  3 <input type="radio" name="radio3">
+  4 <input type="radio" name="radio3">
+  5 <input type="radio" name="radio3">
+  6 <input type="radio" name="radio3">
+  7 <input type="radio" name="radio3">
+  8 <input type="radio" name="radio3">
+  9 <input type="radio" name="radio3">
+  10 <input type="radio" name="radio3"><br>
+
+  <input type="button" value="계산" id="radioclac">
+</body>
+
+<script>
+  $("#radioclac").click(function() {
+    let radioNumber1;
+    let radioNumber2;
+    let radioNumber3;
+    for (let i = 0; i < $(`input[name="radio1"]`).length; i++) {
+      if ($(`input[name="radio1"]`)[i].checked) {
+        radioNumber1 = i + 1
+      }
+      if ($(`input[name="radio2"]`)[i].checked) {
+        radioNumber2 = i + 1
+      }
+      if ($(`input[name="radio3"]`)[i].checked) {
+        radioNumber3 = i + 1
+      }
+    }
+
+    // 최대,최소값 함수 사용시
+    // let max = Math.max(radioNumber1,radioNumber2,radioNumber3);
+    // let min = Math.min(radioNumber1,radioNumber2,radioNumber3);
+    // console.log(Math.pow(max,min))
+
+    let arr = [radioNumber1, radioNumber2, radioNumber3]
+    arr.sort()
+    console.log(Math.pow(arr[arr.length - 1], arr[0]))
+  })
+</script>
+
+</html>

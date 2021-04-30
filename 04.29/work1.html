@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <input type="text" id="number1" value=""><br>
+  <input type="text" id="number2" value=""><br>
+  <input type="button" id="button" value="계산"><br>
+  <span id=resultArea></span>
+</body>
+
+<script>
+  $("#button").click(function() {
+
+    let absNum1 = Math.abs($("#number1").val());
+    let absNum2 = Math.abs($("#number2").val());
+    let plus = absNum1 + absNum2
+    let multiply = absNum1 * absNum2
+    let minus;
+    let division;
+
+    if (absNum1 >= absNum2) {
+      minus = absNum1 - absNum2
+      divison = absNum1 / absNum2
+    } else if (absNum2 > absNum1) {
+      minus = absNum2 - absNum1
+      divison = absNum2 / absNum1
+    }
+    console.log(`더하기 : ${plus}, 빼기 :  ${minus}, 곱하기 : ${multiply}, 나누기 : ${divison}`)
+
+  })
+</script>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  배열 출력하기
+  <span id=resultArea></span>
+</body>
+<script>
+  // console.log(7);
+  // console.log(11);
+  // console.log(15);
+  // console.log(19);
+  // for(let i = 0; i <5; i++) {
+  //   console.log(4*i +7);
+  // }
+  // let str ="abcdef"
+  // console.log(str.length)
+  //
+  // for(let i =0; i<str.length; i++){
+  //   // let split = str.split;
+  //   console.log(str[i])
+  //   console.log(str[i].split("a"))
+  //
+  // };
+  // }
+  // else if (str[j]==6) {
+  //   console.log("짝짝")
+  //   break;
+  // }
+  // else if (str[j]==9) {
+  //   console.log("짝짝")
+  //   break;
+
+
+  // let str;
+  // for (let i = 1; i < 120; i++) {
+  //    str = i+""
+  //     for (let j = 0; j < str.length; j++) {
+  //       if (str[j]=="3"||str[j]=="6"||str[j]=="9") {
+  //          console.log(str+"짝")
+  //        }
+  //       // else
+  //       //   console.log(str)
+  //       //   break;
+  //        }
+  //     }
+  // let str;
+  // for (let i = 1; i < 120; i++) {
+  //   str = i+""
+  //   let jjak = "";
+  //
+  //   let no = false;
+  //   for (let j = 0; j < str.length; j++) {
+  //     if (str[j] == "3" || str[j] == "6" || str[j] == "9") {
+  //       jjak+="짝"
+  //       str = jjak
+  //       no = true
+  //     }
+  //   }
+  //     console.log(str)
+  //
+  // }
+  for(let k=100;k<200;k++) {
+      let number = k;
+      let numberString = number + "";
+
+      let jjakCount = 0;
+      for(let j=0;j<numberString.length;j++) {
+        if(numberString[j]%3==0 && numberString[j]!=0) {
+          jjakCount++;
+        }
+      }
+      let jjakString = "";
+      if(jjakCount==0) {
+        console.log(numberString);
+      }
+      else {
+          for(let i=0;i<jjakCount;i++) {
+            jjakString += "짝";
+          }
+          console.log(jjakString);
+      }
+    }
+
+  // //
+  //  let numberoriginal = 13
+  //
+  // let number = numberoriginal+""
+  //
+  // console.log(number[0])
+  // console.log(number[1])
+
+  //  console.log(number[0])
+  //  console.log(number[1])
+  //  console.log(number[2])
+  //
+  //
+  //  console.log(number.split(i).length)
+  //  console.log(number21.split(i).length)
+
+  //  for (let i = 0; i < 10; i++){
+  //    arr2[i] = i
+  //  console.log(arr2.length)
+  // }
+  //      console.log(arr2[9]/3)
+  // let j = "3";
+  // let abc = "456";
+  // let nuuum = number.split(`j`)
+  // let nuuum22 = abc.split(`j`)
+  //
+  //
+  // console.log(j)
+  // console.log(nuuum.length)
+  // console.log(nuuum22.length)
+  // for(let i = 0; i < number.length; i++){
+  //   let nuuum = number.split(`j`)
+  // console.log(j)
+  // console.log(nuuum.length)
+  // console.log(abc.length)
+
+  // if(number.split("3")==0) {
+  //   console.log("짝")
+  // }
+  // }
+
+  // if (str.length == 1 && arr[i] % 3 == 0) {
+  //   console.log("짝")
+  //   continue;
+  // }
+</script>
+
+</html>

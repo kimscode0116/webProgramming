@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+
+<body>
+  hello world
+</body>
+<script>
+//   let a = {};
+//   a.age = "20";
+//   a.height = "180cm";
+//   a.name = "john";
+//   console.log(a);
+//
+//   let b = {};
+//   b.age = "30";
+//   b.height = "180cm";
+//   b.name = "john";
+//   console.log(b);
+//
+//   let c = {
+//   age: "25",
+//   height: "170cm",
+//   name: "jack"
+// };
+//   console.log(c);
+//
+//   console.log(a, b, c)
+//
+//   let humanArray = [];
+//   humanArray[0] = {
+//     age : 20,
+//     height : '180cm',
+//     name : 'john'
+//   };
+//   humanArray[1] = {
+//     age : 30,
+//     height : '160cm',
+//     name : 'jane'
+//   };
+//   humanArray[2] = {
+//     age : 25,
+//     height : '170cm',
+//     name : 'jack'
+//   };
+//
+//   console.log(humanArray[0], humanArray[1], humanArray[2])
+
+
+// for(let i = 0; i<9; i++){
+//     let star = "";
+//     star += "*";
+//     console.log(star)
+//   for(let j = 0; j<15; j+=2){
+//       star += "**";
+//       console.log(star)
+//   }break;
+// }
+let star = "";
+
+// 직삼각형찍
+for(let i = 1; i<14; i=i+2){
+  star = "";
+    for(let j = 0; j<i; j++){
+        star += "*";
+    }
+  console.log(star)
+}
+
+// 역삼각형 찍기
+for(let i = 1; i<14; i+=2) {
+  star = "";
+  for(let j = 14; j>i; j--) {
+    star += "*";
+    }
+    console.log(star)
+  }
+
+
+// 볼록 삼각형 찍기
+for(let i = 1; i<10; i=i+2){
+   star = "";
+    for(let j = 0; j<i; j++) {
+      star += "*";
+      }
+      console.log(star)
+    }
+for(let i = 1; i<10; i=i+2) {
+   star = "";
+   for(let j = 8; j>i; j--) {
+     star += "*";
+   }
+   console.log(star)
+}
+
+// 볼록 삼각형 찍기(if)
+for(let i = 1; i<20; i=i+2){
+   star = "";
+   if(i<10) {
+    for(let j = 0; j<i; j++) {
+      star += "*";
+      }
+      console.log(star)
+    }
+   else if(i>=10) {
+    for(let k = 18; k>i; k--) {
+      star += "*";
+    }
+    console.log(star)
+  }
+}
+
+</script>
+
+</html>

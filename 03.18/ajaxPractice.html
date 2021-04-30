@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  no : <input type="text" id="no">
+  <input type='button' value='버튼1' id="button1">
+<br>
+  <span id="resultArea"></span>
+  <script>
+    $("#button1").click(function() {
+      // user가 입력한 숫자 보려면?console.log($("#no").val())
+      $.ajax({
+        type: "get",
+        url: `/getPractice?no=${$("#no").val()}`,
+        data: {
+        },
+
+        success: function(res) {
+          $("#resultArea").html("");
+          $("#resultArea").append(`${res[0].NO} / ${res[0].studentNo} / ${res[0].NAME}<br>`);
+          console.log(res)
+        },
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
