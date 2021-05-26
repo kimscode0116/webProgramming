@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  가격 : <input type="text" id="price" value="">
+  <input type="button" id="checkBtn" value="확인">
+  <input type="button" id="insertBtn" value="입력페이지">
+</body>
+<script>
+  $("#checkBtn").click(function() {
+
+    $.ajax({
+      method: "POST",
+      url: `/buyProduct`,
+      data: {
+        inputPrice: $("#price").val()
+      },
+      success: function(res) {
+        if (res == "구매 불가능") {
+          alert("구매가능한 품목이 없습니다")
+          console.log("금액이 부족합니다")
+        } else if (res != null) {
+          alert("구매가능한 품목 : " + res)
+          console.log("구매 가능 : " + res)
+        }
+      }
+    });
+  })
+
+  $("#insertBtn").click(function() {
+    location.href = "/insertInfo";
+  })
+
+
+</script>
+
+</html>
