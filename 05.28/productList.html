@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <div id="resultArea" align="center" style="background-color: #FFA07A">
+  </div><br>
+  <input type="button" id="returnBtn" value="돌아가기">
+
+</body>
+<script>
+  $.ajax({
+    method: "get",
+    url: `/dbList`,
+    data: {},
+    success: function(res) {
+      for (let i = 0; i < res.length; i++) {
+        $("#resultArea").append(`<span id="btnArea${res[i].no}"> ${res[i].no} / ${res[i].itemName} / ${res[i].itemPrice}
+           <input type="button" id="btn${res[i].no}" value="삭제" onclick='userInputBtn(${res[i].no})'>
+           </span><br>`)
+      }
+      // for (let i = 0; i < res.length; i++) {
+      //   $(`#btn${res[i].no}`).click(function() {
+      //     console.log(res[i].itemName)
+      //     $.ajax({
+      //       method: "delete",
+      //       url: `/deleteData`,
+      //       data: {
+      //         inputName: res[i].itemName
+      //       },
+      //       success: function(res) {
+      //         location.href = "/productList";
+      //       }
+      //     });
+      //   })
+      // }
+    }
+  });
+
+  $("#returnBtn").click(function() {
+    location.href = "/practice";
+  })
+
+  function userInputBtn(indexNum) {
+    console.log(indexNum)
+    // `btnArea$(#indexNum)`.remove()
+      $.ajax({
+        method: "delete",
+        url: `/deleteData`,
+        data: {
+          indexNumber : indexNum
+        },
+        success: function(res) {
+          $(`#btnArea${indexNum}`).remove();
+        }
+      });
+      alert("삭제되었습니다")
+    }
+
+</script>
+
+</html>

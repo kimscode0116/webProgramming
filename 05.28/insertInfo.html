@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  아이템 : <input type="text" id="itemInput" value=""><br>
+  가격 : <input type="text" id="priceInput" value=""><br>
+  <input type="button" id="insertBtn" value="입력">
+  <input type="button" id="returnBtn" value="돌아가기">
+</body>
+<script>
+  $("#insertBtn").click(function() {
+
+    $.ajax({
+      method: "POST",
+      url: `/insertDB`,
+      data: {
+        inputItem: $("#itemInput").val(),
+        inputPrice: $("#priceInput").val()
+      },
+      success: function(res) {
+        alert(res)
+        console.log(res)
+        }
+    });
+  })
+
+  $("#returnBtn").click(function() {
+    location.href = "/practice";
+  })
+</script>
+
+</html>
