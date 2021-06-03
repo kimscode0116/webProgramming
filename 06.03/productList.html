@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <div id="resultArea" align="center" >
+  </div><br>
+  <input type="button" id="returnBtn" value="돌아가기">
+
+</body>
+<script>
+  $.ajax({
+    method: "get",
+    url: `/dbList`,
+    data: {},
+    success: function(res) {
+      for (let i = 0; i < res.length; i++) {
+        $("#resultArea").append(`<span id="btnArea${res[i].no}"> ${res[i].no} / ${res[i].itemName} / ${res[i].itemPrice}
+           <input type="button" id="btn${res[i].no}" value="삭제" onclick='userInputBtn(${res[i].no})'>
+           <input type="button" id="editBtn${res[i].no}" value="수정" onclick='userEditBtn(${res[i].no})'>
+           </span><br>`)
+      }
+    }
+  });
+
+  $("#returnBtn").click(function() {
+    location.href = "/practice";
+  })
+
+  function userInputBtn(indexNum) {
+    console.log(indexNum)
+    // `btnArea$(#indexNum)`.remove()
+      $.ajax({
+        method: "delete",
+        url: `/deleteData`,
+        data: {
+          indexNumber : indexNum
+        },
+        success: function(res) {
+          $(`#btnArea${indexNum}`).remove();
+        }
+      });
+      alert("삭제되었습니다")
+    }
+    function userEditBtn(indexNum) {
+      // $.ajax({
+      //   method: "get",
+      //   url: `/getDbData`,
+      //   data: {
+      //     indexNumber : indexNum
+      //   },
+      //   success: function(res) {
+      //     console.log(res[0].no)
+      //     location.href=`/updatePage?${res[0].no}&${res[0].itemName}&${res[0].itemPrice}`
+      //   }
+      // });
+    location.href=`/updatePage?${indexNum}`
+    }
+
+</script>
+
+</html>

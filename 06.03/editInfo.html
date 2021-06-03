@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  수정 내용 입력하세요 <br>
+
+  아이템 : <input type="text" id="updateItem" value="" ><br>
+  가격 : <input type="text" id="updatePrice" value=""><br>
+  <input type="button" id="dpdateBtn" value="입력">
+  <input type="button" id="returnBtn" value="돌아가기">
+
+</body>
+<script>
+let link = document.location.href.split("?")[1];
+//placeholder를 사용하는 경우 아래처럼
+// $("#updateItem").attr("placeholder", link.split("&")[1]);
+// $("#updatePrice").attr("placeholder", link.split("&")[2]);
+
+// list에서 값을 다 가지고 오는 경우 아래처럼
+// $("#updateItem").val(link.split("&")[1]);
+// $("#updatePrice").val(link.split("&")[2]);
+  $.ajax({
+    method: "get",
+    url: `/getDbData`,
+    data: {
+      indexNumber : link
+    },
+    success: function(res) {
+      $("#updateItem").val(res[0].itemName);
+      $("#updatePrice").val(res[0].itemPrice);
+    }
+  });
+
+  $("#dpdateBtn").click(function() {
+    $.ajax({
+      method: "put",
+      url: `/updateDB`,
+      data: {
+        indexNum: link,
+        updateItem: $("#updateItem").val(),
+        updatePrice: $("#updatePrice").val()
+      },
+      success: function(res) {
+        alert(res)
+        console.log(res)
+        }
+    });
+  })
+
+  $("#returnBtn").click(function() {
+    location.href = "/practice";
+  })
+</script>
+
+</html>
