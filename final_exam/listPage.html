@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  학생목록 <br>
+  <div id="resultArea" align="center">
+  </div><br>
+  <input type="button" id="returnMainBtn" value="메인페이지">
+
+</body>
+<script>
+  $.ajax({
+    method: "get",
+    url: `/stuList`,
+    data: {},
+    success: function(res) {
+      for (let i = 0; i < res.length; i++) {
+        $("#resultArea").append(`<span id="btnArea${res[i].no}">
+        ${res[i].no} /
+        학번 : ${res[i].studentNo} /
+        이름 :${res[i].studentName} /
+        javascript : ${res[i].javascript} /
+        python : ${res[i].python} /
+        java : ${res[i].python}
+          <input type="button" id="editBtn${res[i].no}" value="수정" onclick='editInfo(${res[i].no})'>
+          <input type="button" id="deleteBtn${res[i].no}" value="삭제" onclick='deleteInfo(${res[i].no})'>
+           </span><br>`)
+      }
+    }
+  });
+
+  $("#returnMainBtn").click(function() {
+    location.href = "/";
+  })
+
+  function deleteInfo(indexNum) {
+    console.log(indexNum)
+      $.ajax({
+        method: "delete",
+        url: `/deleteData`,
+        data: {
+          indexNumber : indexNum
+        },
+        success: function(res) {
+          $(`#btnArea${indexNum}`).remove();
+          
+          // 새로고침하여 빈 공간 없앨때는 재이동
+          // location.href = "/listPage";
+        }
+      });
+      alert("삭제되었습니다")
+    }
+
+  function editInfo(indexNum) {
+    location.href = `/updatePage?${indexNum}`;
+  }
+
+  $("#returnMainBtn").click(function() {
+    location.href = "/";
+  })
+</script>
+
+</html>

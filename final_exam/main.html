@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  학생관리 프로그램 <br>
+  <select id = "bestScore" name= "bestScore" >
+  <option value="student" name="">전체수석</option>
+  <option value="javascript">javaScript 최고득점</option>
+  <option value="python">python 최고득점</option>
+  <option value="java">java 최고득점</option>
+</select>
+<input type="button" id="checkBtn" value="확인" onclick='  $(`#resultArea`).empty()'/>
+  <div id="resultArea"></div><br>
+
+  <input type="button" id="insertPage" value="입력페이지">
+  <input type="button" id="listPage" value="목록페이지">
+
+
+</body>
+<script>
+  $("#checkBtn").click(function() {
+    let text = $('#bestScore').val();
+
+    if(text=="student") {
+      $.ajax({
+        method: "get",
+        url: `/stuScore`,
+        data: {
+        },
+        success: function(res) {
+          console.log(res);
+        }
+      });//ajax
+    }//if
+
+    else {
+      $.ajax({
+        method: "post",
+        url: `/bestScore`,
+        data: {
+          category : text
+        },
+        success: function(res) {
+          for (let i = 0; i < res.length; i++) {
+            $("#resultArea").append(`
+              <span id="btnArea">
+            ${res[i].no} /
+            학번 : ${res[i].studentNo} /
+            이름 :${res[i].studentName} /
+            javascript : ${res[i].javascript} /
+            python : ${res[i].python} /
+            java : ${res[i].python}
+            </span><br>`)
+          }
+        }
+      });//ajax
+    }
+  })
+
+  function deleteInfo(number) {
+  $(`#btnArea${number}`).remove();
+    }
+
+  $("#insertPage").click(function() {
+    location.href = "/insertPage";
+  })
+
+  $("#listPage").click(function() {
+    location.href = "/listPage";
+  })
+
+
+</script>
+
+</html>

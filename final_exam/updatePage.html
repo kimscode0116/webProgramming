@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  학생 수정<br>
+  학번 : <span id="studentNumber" value=""></span><br>
+  이름 : <input type="text" id="studentName" value=""><br>
+  javascript : <input type="text" id="javascript" value=""><br>
+  python : <input type="text" id="python" value=""><br>
+  java : <input type="text" id="java" value=""><br>
+
+  <input type="button" id="updateBtn" value="수정">
+  <input type="button" id="mainPage" value="메인페이지">
+  <input type="button" id="listPage" value="목록페이지">
+
+</body>
+<script>
+let link = document.location.href.split("?")[1];
+
+  $.ajax({
+    method: "get",
+    url: `/getStuData`,
+    data: {
+      indexNumber : link
+    },
+    success: function(res) {
+      $("#studentNumber").append(res[0].studentNo);
+      $("#studentName").val(res[0].studentName);
+      $("#javascript").val(res[0].javascript);
+      $("#python").val(res[0].python);
+      $("#java").val(res[0].java);
+    }
+  });
+
+  $("#updateBtn").click(function() {
+    $.ajax({
+      method: "put",
+      url: `/updateStuInfo`,
+      data: {
+        indexNum: link,
+        updateName: $("#studentName").val(),
+        updateJs: $("#javascript").val(),
+        updatePy: $("#python").val(),
+        updateJava: $("#java").val()
+      },
+      success: function(res) {
+        if(res=="ok") {
+          alert("학생정보 수정 완료")
+          location.href = "/listPage";
+        }
+        else console.log("error")
+        }
+    });
+  })
+
+  $("#mainPage").click(function() {
+    location.href = "/";
+  })
+
+  $("#listPage").click(function() {
+    location.href = "/listPage";
+  })
+</script>
+
+</html>

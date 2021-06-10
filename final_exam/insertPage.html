@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  학생 입력<br>
+  학번 : <input type="text" id="studentNumber" value=""><br>
+  이름 : <input type="text" id="studentName" value=""><br>
+  javascript : <input type="text" id="javascript" value=""><br>
+  python : <input type="text" id="python" value=""><br>
+  java : <input type="text" id="java" value=""><br>
+
+  <input type="button" id="insertBtn" value="입력">
+  <input type="button" id="mainPage" value="메인페이지">
+  <input type="button" id="listPage" value="목록페이지">
+
+</body>
+<script>
+  $("#insertBtn").click(function() {
+
+    $.ajax({
+      method: "post",
+      url: `/insertNewStu`,
+      data: {
+        stuNum: $("#studentNumber").val(),
+        stuName: $("#studentName").val(),
+        jsScore: $("#javascript").val(),
+        pyScore: $("#python").val(),
+        javaScore: $("#java").val()
+      },
+      success: function(res) {
+        if(res == "ok") {
+          alert("입력되었습니다")
+          location.href = "/listPage";
+        } else if( res=="not ok") {
+          alert("중복된 학번의 학생이 존재합니다")
+        }
+        else console.log("error")
+      }
+    });
+  })
+
+  $("#listPage").click(function() {
+    location.href = "/listPage";
+  })
+
+  $("#mainPage").click(function() {
+    location.href = "/";
+  })
+
+
+</script>
+
+</html>
