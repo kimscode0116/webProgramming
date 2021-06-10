@@ -57,6 +57,7 @@ app.post('/insertDB', function(req, res) {
         WHERE itemName = '${userInputItem}'
         or itemPrice=${userInputprice}`,
     function(error, results, fields) {
+      console.log(results)
       if (results.length >= 2) {
         sendResults = `이름,가격이 동일한데 아이템도 존재 (${results.length}개)`;
         res.send(sendResults)
